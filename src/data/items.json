@@ -1,30 +1,17 @@
 [
   {
-    "nombre": "Roca",
-    "descripcion": "",
-    "elemento1": "Tierra",
-    "elemento2": "",
+    "nombre": "asassadsd",
+    "descripcion": "dsssddsdsdsdsdsds",
+    "elemento1": "Fuego",
+    "elemento2": "Eléctrico",
     "elemento3": "",
     "elemento4": "",
-    "categoria": "1",
+    "categoria": "5",
     "reproduccion": "No",
-    "eclosion": "",
-    "precio": "",
-    "ingresos": "",
-    "id": 1788405888290
-  },
-  {
-    "nombre": "popop",
-    "descripcion": "aaaa",
-    "elemento1": "Magia",
-    "elemento2": "",
-    "elemento3": "",
-    "elemento4": "",
-    "categoria": "2",
-    "reproduccion": "No",
-    "eclosion": "1",
-    "precio": "40000",
-    "ingresos": "8000",
-    "id": 1788466179267
+    "eclosion": "34",
+    "precio": "4444444",
+    "ingresos": "3333333",
+    "id": 1788477228811,
+    "img": "https://static.wikia.nocookie.net/dragoncity/images/2/2f/Flame_Dragon_3.png/revision/latest?cb=20250116095007"
   }
 ]

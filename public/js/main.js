@@ -53,6 +53,7 @@ form.addEventListener("submit", async (e) => {
 
     const nombre = form.querySelector("#nombre").value;
     const descripcion = form.querySelector("#descripcion").value;
+    const img = form.querySelector("#img").value;
 
     const elemento1 = form.querySelector("#elemento1").value;
     const elemento2 = form.querySelector("#elemento2").value;
@@ -74,6 +75,7 @@ form.addEventListener("submit", async (e) => {
     const data = {
         nombre,
         descripcion,
+        img,
         elemento1,
         elemento2,
         elemento3,
