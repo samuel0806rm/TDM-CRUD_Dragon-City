@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,10 @@
 </head>
 
 <body>
+
     <nav class="navbar">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Dragon_City_logo_2022.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
+            alt="logo" class="logo">
         <ul>
             <li><a href="index.html">Gestión</a></li>
             <li><a href="catalog.html">Catálogo</a></li>
@@ -19,38 +22,70 @@
     <h1>Gestión de Items</h1>
 
     <form id="itemForm">
-        <input type="text" id="nombre" placeholder="Nombre del item" required>
-        <input type="text" id="descripcion" placeholder="Descripción">
 
-        <label for="elementos">
-            Elemento(s):
+        <p>
+            Puede encontrar las imagenes en
+            <a href="https://dragoncity.fandom.com/wiki/Category:Dragons">
+                Dragon City Wiki
+            </a>
+        </p>
+        <div>
+            <p>Datos Basicos</p>
+            <input type="text" id="nombre" placeholder="Nombre del item" required>
+            <input type="url" id="img" placeholder="Imagen (url)" required>
+        </div>
+
+        <div>
+            <input type="text" id="descripcion" placeholder="Descripción">
+        </div>
+        <div>
+            <p>Elemento(s)</p>
             <select id="elemento1" required></select>
             <select id="elemento2"></select>
             <select id="elemento3"></select>
             <select id="elemento4"></select>
-        </label>
+        </div>
+        <p>Seleccione al menos 1 elemento</p>
+
+        <div>
+            <div>
+                <p>Categoria</p>
+                <input type="range" id="categoria" min="1" max="11" value="1" step="1"
+                    oninput="categoriaValor.textContent = this.value">
+                <output id="categoriaValor">1</output>
+            </div>
+            <div>
+                <p>Tiempo de Eclosión</p>
+                <input type="range" id="eclosion" min="1" max="100" value="1" step="1"
+                    oninput="eclosionValor.textContent = this.value">
+                <output id="eclosionValor">1</output>
+
+                <select id="unidad">
+                    <option value="s">Segundo(s)</option>
+                    <option value="m">Minuto(s)</option>
+                    <option value="d">Día(s)</option>
+                </select>
+            </div>
+        </div>
 
 
-        <label for="categoria">
-            Categoría:
-            <input type="range" id="categoria" min="1" max="11" value="1" step="1"
-                oninput="categoriaValor.textContent = this.value">
-            <output id="categoriaValor">1</output>
-        </label>
-
-        <label for="reproduccion">
-            Reproducción
+        <div>
             <select id="reproduccion">
-                <option value="No">No</option>
-                <option value="Si">Si</option>
+                <option value="No">No se reproduce</option>
+                <option value="Si">Si se reproduce</option>
             </select>
-        </label>
-        
-        <input type="number" id="eclosion" placeholder="Tiempo de Eclosión">
-        <input type="number" id="precio" placeholder="Precio">
-        <input type="number" id="ingresos" placeholder="Ingresos por min.">
+
+            <input type="number" id="precio" placeholder="Precio">
+
+            <input type="number" id="ingresos" placeholder="Ingresos por min.">
+            <span>/min</span>
+        </div>
+
+
         <button type="submit" id="submitBtn">Agregar</button>
+
     </form>
+
 
     <table>
         <thead>
@@ -70,10 +105,12 @@
                 <th>Acciones</th>
             </tr>
         </thead>
+
         <tbody id="itemsTable"></tbody>
     </table>
 
     <script type="module" src="./js/main.js"></script>
+
 </body>
 
 </html>

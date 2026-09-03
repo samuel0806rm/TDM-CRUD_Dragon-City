@@ -1,66 +1,149 @@
-/* index.html */
+:root {
+}
+
+/* ===== BODY ===== */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background: #f9f9f9;
+    display: grid;
+    justify-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1 {
-    color: #333;
+
+/* ===== FORMULARIO ===== */
+#itemForm {
+    width: 90%;
+    background-color: #f9ffdf;
+    padding: 10px;
 }
 
-form {
-    margin-bottom: 20px;
-}
 
-input {
-    padding: 8px;
-    margin-right: 5px;
-}
+/* ===== BLOQUES PRINCIPALES DEL FORM ===== */
+/*
+    Corresponde a:
 
-button {
-    padding: 8px 12px;
-    background: #007acc;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+    <div>
+        ...
+    </div>
 
-button:hover {
-    background: #005fa3;
-}
-
-table {
+    Cada div principal representa una sección del formulario.
+*/
+#itemForm > div {
     width: 100%;
-    border-collapse: collapse;
-    background: white;
+    margin-bottom: 20px;
+    align-items: center;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+
+
+
+/* ===== INPUTS Y SELECTS ===== */
+/*
+    Corresponde a:
+    
+    <input>
+    <select>
+*/
+#itemForm input,
+#itemForm select {
+    text-align: center;
+    box-sizing: border-box;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
 }
 
-/* Navbar */
-.navbar {
-    background: #333;
-    padding: 0.5rem;
+
+/* ===== CAMPOS DEL FORMULARIO ===== */
+/*
+    Corresponde a los inputs y selects que aparecen
+    dentro de los bloques principales.
+
+    Excluye los sliders (type="range").
+*/
+#itemForm input:not([type="range"]),
+#itemForm select {
+    flex: 1;
+    min-width: 0;
 }
 
-.navbar ul {
-    list-style: none;
+
+/* ===== FILAS PRINCIPALES ===== */
+/*
+    Corresponde a cada <div> principal del formulario.
+
+    Ejemplo:
+
+    <div>
+        <input>
+        <input>
+    </div>
+
+    Hace que sus elementos se coloquen horizontalmente.
+*/
+#itemForm > div {
     display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
+    gap: 10px;
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
+
+/* ===== DESCRIPCIÓN ===== */
+/*
+    Corresponde a:
+
+    <input type="text" id="descripcion">
+*/
+#descripcion {
+    width: 100%;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
+
+/* ===== COLUMNAS INTERNAS ===== */
+/*
+    Corresponde a los div que están dentro de otro div.
+
+    Ejemplo:
+
+    <div>
+        <div>
+            Categoría...
+        </div>
+
+        <div>
+            Tiempo de Eclosión...
+        </div>
+    </div>
+
+    Hace que cada bloque interno ocupe el mismo espacio.
+*/
+#itemForm > div > div {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ===== SLIDERS ===== */
+/*
+    Corresponde a:
+
+    <input type="range" id="categoria">
+    <input type="range" id="eclosion">
+
+    Hace que el slider ocupe el espacio disponible.
+*/
+#categoria,
+#eclosion {
+    flex: 1;
+    width: 100%;
+}
+
+
+/* ===== TEXTO /min ===== */
+/*
+    Corresponde a:
+
+    <span>/min</span>
+*/
+#itemForm span {
+    display: flex;
+    align-items: center;
 }

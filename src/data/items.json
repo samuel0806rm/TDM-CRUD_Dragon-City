@@ -12,5 +12,19 @@
     "precio": "",
     "ingresos": "",
     "id": 1788405888290
+  },
+  {
+    "nombre": "popop",
+    "descripcion": "aaaa",
+    "elemento1": "Magia",
+    "elemento2": "",
+    "elemento3": "",
+    "elemento4": "",
+    "categoria": "2",
+    "reproduccion": "No",
+    "eclosion": "1",
+    "precio": "40000",
+    "ingresos": "8000",
+    "id": 1788466179267
   }
 ]
