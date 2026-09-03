@@ -1,33 +1,59 @@
 export function renderItems(items, tableBody) {
     tableBody.innerHTML = "";
+
     items.forEach(item => {
         const row = document.createElement("tr");
+
         row.innerHTML = `
             <td>${item.id}</td>
-            <td>${item.name}</td>                
-            <td>${item.description || ""}</td>        
-            <td>${item.element}</td>                 
-            <td>${item.categorias}<td>
-            <td>${item.reproduccion}<td>
-            <td>${item.exclosion}<td>
-            <td>${item.precio}<td>
-            <td>${item.ingreso}<td>
+            <td>${item.nombre}</td>
+            <td>${item.descripcion || "DESCONOCIDO"}</td>
+            <td>${item.elemento1}</td>
+            <td>${item.elemento2}</td>
+            <td>${item.elemento3}</td>
+            <td>${item.elemento4}</td>
+            <td>${item.categoria}</td>
+            <td>${item.reproduccion || "NO"}</td>
+            <td>${item.eclosion || "0"}</td>
+            <td>${item.precio || "0"}</td>
+            <td>${item.ingresos || "0/min"}</td>
             <td>
                 <button class="btn-edit" data-id="${item.id}">Editar</button>
                 <button class="btn-delete" data-id="${item.id}">Eliminar</button>
             </td>
         `;
+
         tableBody.appendChild(row);
     });
 }
 
+
 export function resetForm(form, submitBtn) {
     form.reset();
-    if (submitBtn) submitBtn.textContent = "Agregar";
+
+    if (submitBtn) {
+        submitBtn.textContent = "Agregar";
+    }
 }
 
+
 export function fillForm(form, item, submitBtn) {
-    form.querySelector("#name").value = item.name;
-    form.querySelector("#description").value = item.description || "";
-    if (submitBtn) submitBtn.textContent = "Guardar cambios";
+    form.querySelector("#nombre").value = item.nombre || "";
+    form.querySelector("#descripcion").value = item.descripcion || "";
+
+    form.querySelector("#elemento1").value = item.elemento1 || "";
+    form.querySelector("#elemento2").value = item.elemento2 || "";
+    form.querySelector("#elemento3").value = item.elemento3 || "";
+    form.querySelector("#elemento4").value = item.elemento4 || "";
+
+    form.querySelector("#categoria").value = item.categoria || "";
+    form.querySelector("#reproduccion").value = item.reproduccion || "";
+
+    form.querySelector("#eclosion").value = item.eclosion || "";
+    form.querySelector("#precio").value = item.precio || "";
+    form.querySelector("#ingresos").value = item.ingresos || "";
+
+    if (submitBtn) {
+        submitBtn.textContent = "Guardar cambios";
+    }
 }

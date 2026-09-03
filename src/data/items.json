@@ -1,12 +1,16 @@
 [
   {
-    "name": "Objeto 2",
-    "description": "Descripción 2",
-    "id": 2
-  },
-  {
-    "name": "Objeto 3",
-    "description": "Descripcion 3",
-    "id": 1788353021733
+    "nombre": "Roca",
+    "descripcion": "",
+    "elemento1": "Tierra",
+    "elemento2": "",
+    "elemento3": "",
+    "elemento4": "",
+    "categoria": "1",
+    "reproduccion": "No",
+    "eclosion": "",
+    "precio": "",
+    "ingresos": "",
+    "id": 1788405888290
   }
 ]

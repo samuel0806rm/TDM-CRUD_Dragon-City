@@ -1,10 +1,18 @@
 import { getItems, getItem, createItem, updateItem, deleteItem } from "./services/api.js";
 import { renderItems, resetForm, fillForm } from "./ui/ui.js";
+import { elements } from "./elements.js";
 
 const form = document.getElementById("itemForm");
 const tableBody = document.getElementById("itemsTable");
 const submitBtn = document.getElementById("submitBtn");
 let editingId = null;
+const selectoresElementos = [
+    document.getElementById("elemento1"),
+    document.getElementById("elemento2"),
+    document.getElementById("elemento3"),
+    document.getElementById("elemento4")
+];
+
 
 // Eventos de tabla (delegación)
 tableBody.addEventListener("click", async (e) => {
@@ -28,6 +36,7 @@ tableBody.addEventListener("click", async (e) => {
                 editingId = null;
                 return;
             }
+
             const item = await getItem(id);
             fillForm(form, item, submitBtn);
             editingId = id;
@@ -41,20 +50,47 @@ tableBody.addEventListener("click", async (e) => {
 // Envío del form
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const name = form.querySelector("#name").value;
-    const description = form.querySelector("#description").value;
 
-    if (!name) {
+    const nombre = form.querySelector("#nombre").value;
+    const descripcion = form.querySelector("#descripcion").value;
+
+    const elemento1 = form.querySelector("#elemento1").value;
+    const elemento2 = form.querySelector("#elemento2").value;
+    const elemento3 = form.querySelector("#elemento3").value;
+    const elemento4 = form.querySelector("#elemento4").value;
+
+    const categoria = form.querySelector("#categoria").value;
+    const reproduccion = form.querySelector("#reproduccion").value;
+
+    const eclosion = form.querySelector("#eclosion").value;
+    const precio = form.querySelector("#precio").value;
+    const ingresos = form.querySelector("#ingresos").value;
+
+    if (!nombre) {
         alert("El campo nombre es obligatorio");
         return;
     }
 
+    const data = {
+        nombre,
+        descripcion,
+        elemento1,
+        elemento2,
+        elemento3,
+        elemento4,
+        categoria,
+        reproduccion,
+        eclosion,
+        precio,
+        ingresos
+    };
+
     try {
         if (editingId) {
-            await updateItem(editingId, { name, description });
+            await updateItem(editingId, data);
             editingId = null;
         } else {
-            await createItem({ name, description });
+            await createItem(data);
         }
 
         resetForm(form, submitBtn);
@@ -64,6 +100,28 @@ form.addEventListener("submit", async (e) => {
         alert("No se pudo guardar el item.");
     }
 });
+
+//Elementos
+selectoresElementos.forEach(select => {
+    const placeholder = document.createElement("option");
+
+    placeholder.value = "";
+    placeholder.textContent = "Selecciona un elemento";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+
+    select.appendChild(placeholder);
+
+    elements.forEach(elemento => {
+        const option = document.createElement("option");
+
+        option.value = elemento.nombre;
+        option.textContent = elemento.nombre;
+
+        select.appendChild(option);
+    });
+});
+
 
 // Cargar al inicio
 async function loadItems() {
@@ -75,5 +133,8 @@ async function loadItems() {
         alert("No se pudieron cargar los items.");
     }
 }
+
+console.log("MAIN FUNCIONANDO");
+console.log("ELEMENTS:", elements);
 
 loadItems();

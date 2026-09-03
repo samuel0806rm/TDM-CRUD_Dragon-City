@@ -19,8 +19,36 @@
     <h1>Gestión de Items</h1>
 
     <form id="itemForm">
-        <input type="text" id="name" placeholder="Nombre del item" required>
-        <input type="text" id="description" placeholder="Descripción">
+        <input type="text" id="nombre" placeholder="Nombre del item" required>
+        <input type="text" id="descripcion" placeholder="Descripción">
+
+        <label for="elementos">
+            Elemento(s):
+            <select id="elemento1" required></select>
+            <select id="elemento2"></select>
+            <select id="elemento3"></select>
+            <select id="elemento4"></select>
+        </label>
+
+
+        <label for="categoria">
+            Categoría:
+            <input type="range" id="categoria" min="1" max="11" value="1" step="1"
+                oninput="categoriaValor.textContent = this.value">
+            <output id="categoriaValor">1</output>
+        </label>
+
+        <label for="reproduccion">
+            Reproducción
+            <select id="reproduccion">
+                <option value="No">No</option>
+                <option value="Si">Si</option>
+            </select>
+        </label>
+        
+        <input type="number" id="eclosion" placeholder="Tiempo de Eclosión">
+        <input type="number" id="precio" placeholder="Precio">
+        <input type="number" id="ingresos" placeholder="Ingresos por min.">
         <button type="submit" id="submitBtn">Agregar</button>
     </form>
 
@@ -30,7 +58,10 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <th>Elementos</th>
+                <th>1° Elemento</th>
+                <th>2° Elemento</th>
+                <th>3° Elemento</th>
+                <th>4° Elemento</th>
                 <th>Categoria</th>
                 <th>Reproducción</th>
                 <th>Eclosión</th>
