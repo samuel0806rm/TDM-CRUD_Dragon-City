@@ -147,3 +147,103 @@ body {
     display: flex;
     align-items: center;
 }
+
+/* ==============================
+   CATÁLOGO DE DRAGON CITY
+   ============================== */
+
+#catalogContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card de cada dragón */
+
+#catalogContainer .dragon-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+
+#catalogContainer .dragon-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagen del dragón */
+
+#catalogContainer .dragon-image {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#catalogContainer .dragon-image img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+/* Información */
+
+#catalogContainer .dragon-info h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Elementos */
+
+#catalogContainer .dragon-elements {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+#catalogContainer .element-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Textos */
+
+#catalogContainer .dragon-info p {
+    margin: 8px 0;
+}
+
+/* Botón */
+
+#catalogContainer .btn-detail {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+#catalogContainer .btn-detail:hover {
+    transform: scale(1.03);
+}
+
+#detailModal {
+    display: none;
+}
+
+#detailModal.show {
+    display: flex;
+}

@@ -3,11 +3,18 @@ import { elements } from "./elements.js";
 const API_URL = "/api/items";
 
 const catalogContainer = document.getElementById("catalogContainer");
+const detailModal = document.getElementById("detailModal");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
 
+
+// Buscar un elemento por su nombre
 function buscarElemento(nombre) {
     return elements.find(elemento => elemento.nombre === nombre);
 }
 
+
+// Cargar catálogo
 async function loadCatalog() {
 
     try {
@@ -18,12 +25,16 @@ async function loadCatalog() {
 
         catalogContainer.innerHTML = "";
 
+
+        // Crear una card por cada dragón
         items.forEach(item => {
 
             const card = document.createElement("div");
 
             card.className = "dragon-card";
 
+
+            // Obtener los elementos del dragón
             const elementos = [
                 item.elemento1,
                 item.elemento2,
@@ -31,6 +42,8 @@ async function loadCatalog() {
                 item.elemento4
             ].filter(Boolean);
 
+
+            // Crear HTML para los iconos de los elementos
             const elementosHTML = elementos.map(nombreElemento => {
 
                 const elemento = buscarElemento(nombreElemento);
@@ -48,40 +61,46 @@ async function loadCatalog() {
 
             }).join("");
 
+
+            // Contenido de la card
             card.innerHTML = `
-    <div class="dragon-image">
-        <img 
-            src="${item.img}" 
-            alt="${item.nombre}"
-        >
-    </div>
+                <div class="dragon-image">
 
-    <div class="dragon-info">
+                    <img 
+                        src="${item.img}" 
+                        alt="${item.nombre}"
+                    >
 
-        <h3>${item.nombre}</h3>
+                </div>
 
-        <div class="dragon-elements">
-            ${elementosHTML}
-        </div>
 
-        <p>
-            <strong>Categoría:</strong> 
-            ${item.categoria}
-        </p>
+                <div class="dragon-info">
 
-        <p>
-            <strong>Precio:</strong> 
-            ${item.precio}
-        </p>
+                    <h3>${item.nombre}</h3>
 
-        <button 
-            class="btn-detail" 
-            data-id="${item.id}">
-            Ver detalles
-        </button>
+                    <div class="dragon-elements">
+                        ${elementosHTML}
+                    </div>
 
-    </div>
-`;
+                    <p>
+                        <strong>Categoría:</strong> 
+                        ${item.categoria}
+                    </p>
+
+                    <p>
+                        <strong>Precio:</strong> 
+                        ${item.precio}
+                    </p>
+
+                    <button 
+                        class="btn-detail" 
+                        data-id="${item.id}">
+                        Ver detalles
+                    </button>
+
+                </div>
+            `;
+
 
             catalogContainer.appendChild(card);
 
@@ -100,6 +119,8 @@ async function loadCatalog() {
 }
 
 
+
+// Evento para abrir el detalle del dragón
 catalogContainer.addEventListener("click", async (e) => {
 
     const btn = e.target.closest(".btn-detail");
@@ -107,6 +128,7 @@ catalogContainer.addEventListener("click", async (e) => {
     if (!btn) return;
 
     const id = Number(btn.dataset.id);
+
 
     try {
 
@@ -118,7 +140,83 @@ catalogContainer.addEventListener("click", async (e) => {
 
         const item = await res.json();
 
-        console.log("Dragón seleccionado:", item);
+
+        // Obtener los elementos del dragón
+        const elementos = [
+            item.elemento1,
+            item.elemento2,
+            item.elemento3,
+            item.elemento4
+        ].filter(Boolean);
+
+
+        // Crear HTML para los iconos
+        const elementosHTML = elementos.map(nombreElemento => {
+
+            const elemento = buscarElemento(nombreElemento);
+
+            if (!elemento) return "";
+
+            return `
+                <img 
+                    src="${elemento.imagen}" 
+                    alt="${elemento.nombre}"
+                    title="${elemento.nombre}"
+                    class="element-icon"
+                >
+            `;
+
+        }).join("");
+
+
+        // Contenido del modal
+        modalContent.innerHTML = `
+            <h2>${item.nombre}</h2>
+
+            <img 
+                src="${item.img}" 
+                alt="${item.nombre}"
+                class="modal-dragon-image"
+            >
+
+            <div class="modal-elements">
+                ${elementosHTML}
+            </div>
+
+            <p>
+                <strong>Descripción:</strong> 
+                ${item.descripcion}
+            </p>
+
+            <p>
+                <strong>Categoría:</strong> 
+                ${item.categoria}
+            </p>
+
+            <p>
+                <strong>Reproducción:</strong> 
+                ${item.reproduccion}
+            </p>
+
+            <p>
+                <strong>Eclosión:</strong> 
+                ${item.eclosion}
+            </p>
+
+            <p>
+                <strong>Precio:</strong> 
+                ${item.precio}
+            </p>
+
+            <p>
+                <strong>Ingresos por minuto:</strong> 
+                ${item.ingresos}
+            </p>
+        `;
+
+
+        // Mostrar modal
+        detailModal.classList.add("show");
 
     } catch (err) {
 
@@ -129,4 +227,15 @@ catalogContainer.addEventListener("click", async (e) => {
 });
 
 
+
+// Cerrar modal
+closeModal.addEventListener("click", () => {
+
+    detailModal.classList.remove("show");
+
+});
+
+
+
+// Cargar catálogo al iniciar
 loadCatalog();

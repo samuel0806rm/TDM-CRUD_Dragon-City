@@ -13,5 +13,35 @@
     "ingresos": "3333333",
     "id": 1788477228811,
     "img": "https://static.wikia.nocookie.net/dragoncity/images/2/2f/Flame_Dragon_3.png/revision/latest?cb=20250116095007"
+  },
+  {
+    "nombre": "Dragon Pegasus",
+    "descripcion": "morado",
+    "img": "https://static.wikia.nocookie.net/dragoncity/images/9/95/Spiked_Pegasus_Dragon_3.png/revision/latest?cb=20241001165821",
+    "elemento1": "Magia",
+    "elemento2": "Leyenda",
+    "elemento3": "Sueño",
+    "elemento4": "Fuego",
+    "categoria": "9",
+    "reproduccion": "No",
+    "eclosion": "23",
+    "precio": "4590444",
+    "ingresos": "5000",
+    "id": 1788481378192
+  },
+  {
+    "nombre": "Dragon raro",
+    "descripcion": "raro",
+    "img": "https://static.wikia.nocookie.net/dragoncity/images/e/eb/High_Stained_Naiad_Dragon_3.png/revision/latest?cb=20260724010855",
+    "elemento1": "Tierra",
+    "elemento2": "Felicidad",
+    "elemento3": "Caos",
+    "elemento4": "Alma",
+    "categoria": "4",
+    "reproduccion": "Si",
+    "eclosion": "39",
+    "precio": "30000000",
+    "ingresos": "1998",
+    "id": 1788481475325
   }
 ]
