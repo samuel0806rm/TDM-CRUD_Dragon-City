@@ -229,6 +229,27 @@ closeModal.addEventListener("click", () => {
 
 });
 
+/* CERRAR AL HACER CLIC FUERA */
+
+detailModal.addEventListener("click", (e) => {
+
+    if (e.target === detailModal) {
+        detailModal.classList.remove("show");
+    }
+
+});
+
+
+/* CERRAR CON ESCAPE */
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+        detailModal.classList.remove("show");
+    }
+
+});
+
 
 // Cargar catálogo al iniciar
 loadCatalog();
