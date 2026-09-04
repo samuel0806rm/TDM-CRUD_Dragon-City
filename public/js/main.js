@@ -111,26 +111,35 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
-//Elementos
-selectoresElementos.forEach(select => {
+// ELEMENTOS
+
+selectoresElementos.forEach((select, index) => {
+
     const placeholder = document.createElement("option");
 
     placeholder.value = "";
-    placeholder.textContent = "Selecciona un elemento";
-    placeholder.disabled = true;
+    placeholder.textContent = index === 0
+        ? "Selecciona un elemento"
+        : "Sin elemento";
+
     placeholder.selected = true;
 
     select.appendChild(placeholder);
 
     elements.forEach(elemento => {
+
         const option = document.createElement("option");
 
         option.value = elemento.nombre;
         option.textContent = elemento.nombre;
 
         select.appendChild(option);
+
     });
+
 });
+
+
 
 
 // Cargar al inicio
