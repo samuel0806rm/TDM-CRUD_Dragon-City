@@ -1,3 +1,11 @@
+const unidadesTiempo = {
+    s: "segundos",
+    m: "minutos",
+    h: "horas",
+    d: "días"
+};
+
+
 export function renderItems(items, tableBody) {
     tableBody.innerHTML = "";
 
@@ -14,7 +22,7 @@ export function renderItems(items, tableBody) {
             <td>${item.elemento4}</td>
             <td>${item.categoria}</td>
             <td>${item.reproduccion || "NO"}</td>
-            <td>${item.eclosion || "0"}</td>
+            <td>${item.eclosion || "0"} ${unidadesTiempo[item.unidad] || ""}</td>
             <td>${item.precio || "0"}</td>
             <td>${item.ingresos || "0/min"}</td>
             <td>
@@ -39,6 +47,7 @@ export function resetForm(form, submitBtn) {
 
 export function fillForm(form, item, submitBtn) {
     form.querySelector("#nombre").value = item.nombre || "";
+    form.querySelector("#img").value = item.img || "";
     form.querySelector("#descripcion").value = item.descripcion || "";
 
     form.querySelector("#elemento1").value = item.elemento1 || "";
@@ -50,6 +59,8 @@ export function fillForm(form, item, submitBtn) {
     form.querySelector("#reproduccion").value = item.reproduccion || "";
 
     form.querySelector("#eclosion").value = item.eclosion || "";
+    form.querySelector("#unidad").value = item.unidad || "s";
+
     form.querySelector("#precio").value = item.precio || "";
     form.querySelector("#ingresos").value = item.ingresos || "";
 
@@ -57,3 +68,4 @@ export function fillForm(form, item, submitBtn) {
         submitBtn.textContent = "Guardar cambios";
     }
 }
+

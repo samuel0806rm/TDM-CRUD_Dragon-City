@@ -8,11 +8,12 @@
     "elemento4": "",
     "categoria": "5",
     "reproduccion": "No",
-    "eclosion": "34",
+    "eclosion": 34,
     "precio": "4444444",
     "ingresos": "3333333",
     "id": 1788477228811,
-    "img": "https://static.wikia.nocookie.net/dragoncity/images/2/2f/Flame_Dragon_3.png/revision/latest?cb=20250116095007"
+    "img": "https://static.wikia.nocookie.net/dragoncity/images/2/2f/Flame_Dragon_3.png/revision/latest?cb=20250116095007",
+    "unidad": "s"
   },
   {
     "nombre": "Dragon Pegasus",

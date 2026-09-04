@@ -61,9 +61,16 @@ form.addEventListener("submit", async (e) => {
     const elemento4 = form.querySelector("#elemento4").value;
 
     const categoria = form.querySelector("#categoria").value;
+
     const reproduccion = form.querySelector("#reproduccion").value;
 
-    const eclosion = form.querySelector("#eclosion").value;
+    const eclosion = Number(
+        form.querySelector("#eclosion").value
+    );
+
+    const unidad = form.querySelector("#unidad").value;
+
+
     const precio = form.querySelector("#precio").value;
     const ingresos = form.querySelector("#ingresos").value;
 
@@ -83,6 +90,7 @@ form.addEventListener("submit", async (e) => {
         categoria,
         reproduccion,
         eclosion,
+        unidad,
         precio,
         ingresos
     };

@@ -1,244 +1,575 @@
 :root {
+    /* Colores */
+    --azul: #2376d4;
+    --azul-oscuro: #174F7A;
+    --celeste: #75C8D5;
+    --amarillo: #e4d2a4;
+    --gris: #8C8A82;
+    --gris-oscuro: #4A4945;
+    --gris-claro: #D8D2C4;
+    --blanco: #FFF;
+    --negro: #222;
+    --verde: #4E9A38;
+    --rojo: #B83A2F;
+
+    /* Colores para hover */
+    --azul-hover: #09a7f0;
+    --verde-hover: #5AB544;
+    --rojo-hover: #D34235;
+
+    /* Tamaños de texto */
+    --fuente-grande: 25px;
+    --fuente-normal: 15px;
+    --fuente-pequena: 13px;
+    --fuente-campo: 14px;
+    --fuente-titulo: 22px;
+
+    /* Bordes */
+    --borde: 2px;
+    --borde-formulario: 8px;
+    --radio: 8px;
+    --radio-grande: 16px;
+    --radio-circular: 50%;
+
+    /* Espaciado */
+    --espacio-formulario: 15px;
+    --espacio-formulario-interno: 15px;
+    --espacio-tabla: 4px;
+    --espacio-catalogo: 15px;
+
+    /* Transiciones */
+    --transicion: .2s;
+
+    /* Fuente */
+    --fuente: Arial, Helvetica, sans-serif;
 }
 
-/* ===== BODY ===== */
+
+/* Cuerpo */
+
 body {
+    margin: 20px;
+    background-color: var(--celeste);
+    color: var(--negro);
+    font-family: var(--fuente);
+    font-size: var(--fuente-normal);
+}
+
+
+/* Navbar */
+
+.navbar {
     display: grid;
     justify-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-/* ===== FORMULARIO ===== */
-#itemForm {
-    width: 90%;
-    background-color: #f9ffdf;
-    padding: 10px;
-}
-
-
-/* ===== BLOQUES PRINCIPALES DEL FORM ===== */
-/*
-    Corresponde a:
-
-    <div>
-        ...
-    </div>
-
-    Cada div principal representa una sección del formulario.
-*/
-#itemForm > div {
-    width: 100%;
     margin-bottom: 20px;
-    align-items: center;
+    padding: 10px;
+    background-color: var(--azul);
+    border-radius: var(--radio-grande);
+}
+
+.navbar .logo {
+    width: 120px;
+    max-width: 100%;
+}
+
+.navbar ul {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 5px 0;
+    gap: 10px;
+    list-style: none;
+}
+
+.navbar li {
+    flex: 1;
+}
+
+.navbar a {
+    display: block;
+    padding: 10px 20px;
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    border: var(--borde) solid transparent;
+    border-radius: var(--radio);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color var(--transicion);
+}
+
+.navbar a:hover {
+    background-color: var(--azul-hover);
+}
+
+.navbar a:active {
+    background-color: var(--azul-oscuro);
 }
 
 
+/* Titulos */
+
+h1 {
+    margin: 20px 0 25px;
+    color: var(--azul-oscuro);
+    font-size: var(--fuente-grande);
+    text-align: center;
+}
 
 
-/* ===== INPUTS Y SELECTS ===== */
-/*
-    Corresponde a:
-    
-    <input>
-    <select>
-*/
-#itemForm input,
-#itemForm select {
+/* Formulario */
+
+#itemForm {
+    width: min(90%, 1200px);
+    margin: auto;
+    padding: 25px;
+    background-color: var(--amarillo);
+    border: var(--borde-formulario) solid var(--gris);
+    border-radius: var(--radio);
     text-align: center;
     box-sizing: border-box;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
 }
 
 
-/* ===== CAMPOS DEL FORMULARIO ===== */
-/*
-    Corresponde a los inputs y selects que aparecen
-    dentro de los bloques principales.
+/* Agrupacion del formulario */
 
-    Excluye los sliders (type="range").
-*/
+#itemForm > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: var(--espacio-formulario-interno);
+    margin-bottom: var(--espacio-formulario);
+}
+
+#itemForm > div:last-of-type {
+    margin-bottom: 15px;
+}
+
+#itemForm > p {
+    font-size: var(--fuente-normal);
+}
+
+#itemForm > p:first-child {
+    margin: 0 0 25px;
+    font-size: var(--fuente-pequena);
+}
+
+#itemForm > p:last-of-type {
+    margin: -20px 0 30px;
+    color: var(--azul-oscuro);
+    font-size: var(--fuente-pequena);
+    font-style: italic;
+}
+
+#itemForm > div > p,
+#itemForm > div > div > p {
+    color: var(--azul-oscuro);
+    font-weight: bold;
+}
+
+
+/* Enlace Wiki */
+
+#itemForm > p:first-child a {
+    color: var(--azul-oscuro);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color var(--transicion);
+}
+
+#itemForm > p:first-child a:hover {
+    color: var(--azul);
+}
+
+
+/* Campos */
+
 #itemForm input:not([type="range"]),
 #itemForm select {
+    height: 32px;
+    padding: 5px 10px;
+    background-color: var(--blanco);
+    color: var(--negro);
+    border: var(--borde) solid var(--gris);
+    border-radius: var(--radio);
+    outline: none;
+    font-family: var(--fuente);
+    font-size: var(--fuente-campo);
+    text-align: center;
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+    box-sizing: border-box;
+}
+
+#itemForm input:not([type="range"]):hover,
+#itemForm select:hover {
+    border-color: var(--azul);
+}
+
+#itemForm input:not([type="range"]):focus,
+#itemForm select:focus {
+    border-color: var(--azul-oscuro);
+    box-shadow: 0 0 0 2px rgba(8, 120, 209, .2);
+}
+
+
+/* Datos basicos */
+
+#nombre,
+#img {
     flex: 1;
     min-width: 0;
 }
 
-
-/* ===== FILAS PRINCIPALES ===== */
-/*
-    Corresponde a cada <div> principal del formulario.
-
-    Ejemplo:
-
-    <div>
-        <input>
-        <input>
-    </div>
-
-    Hace que sus elementos se coloquen horizontalmente.
-*/
-#itemForm > div {
-    display: flex;
-    gap: 10px;
-}
-
-
-/* ===== DESCRIPCIÓN ===== */
-/*
-    Corresponde a:
-
-    <input type="text" id="descripcion">
-*/
 #descripcion {
     width: 100%;
 }
 
 
-/* ===== COLUMNAS INTERNAS ===== */
-/*
-    Corresponde a los div que están dentro de otro div.
+/* Elementos */
 
-    Ejemplo:
-
-    <div>
-        <div>
-            Categoría...
-        </div>
-
-        <div>
-            Tiempo de Eclosión...
-        </div>
-    </div>
-
-    Hace que cada bloque interno ocupe el mismo espacio.
-*/
-#itemForm > div > div {
+#elemento1,
+#elemento2,
+#elemento3,
+#elemento4 {
     flex: 1;
     min-width: 0;
 }
 
 
-/* ===== SLIDERS ===== */
-/*
-    Corresponde a:
+/* Categoria y eclosion */
 
-    <input type="range" id="categoria">
-    <input type="range" id="eclosion">
+#itemForm > div > div:has(#categoria),
+#itemForm > div > div:has(#eclosion) {
+    flex: 1;
+    min-width: 0;
+    padding: 14px;
+    background-color: rgba(103, 74, 139, .1);
+    border: var(--borde) solid var(--gris-claro);
+    border-radius: var(--radio);
+}
 
-    Hace que el slider ocupe el espacio disponible.
-*/
+
+/* Categoria */
+
+#itemForm > div > div:has(#categoria) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#itemForm > div > div:has(#categoria) > p {
+    grid-column: 1 / -1;
+    margin: 0 0 10px;
+}
+
+#categoria {
+    grid-column: 1;
+}
+
+
+/* Eclosion */
+
+#itemForm > div > div:has(#eclosion) {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#itemForm > div > div:has(#eclosion) > p {
+    grid-column: 1 / -1;
+    margin: 0 0 10px;
+}
+
+#eclosion {
+    grid-column: 1;
+}
+
+#unidad {
+    grid-column: 3;
+    width: 115px !important;
+    height: 30px !important;
+    flex: none !important;
+}
+
+
+/* Sliders */
+
 #categoria,
 #eclosion {
-    flex: 1;
     width: 100%;
+    height: 6px;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    background-color: var(--gris);
+    border: none !important;
+    border-radius: var(--radio);
+    outline: none;
+    cursor: pointer;
 }
 
 
-/* ===== TEXTO /min ===== */
-/*
-    Corresponde a:
+/* Valores de slider */
 
-    <span>/min</span>
-*/
-#itemForm span {
+#categoriaValor,
+#eclosionValor {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 30px;
+    padding: 5px 10px;
+    background-color: var(--blanco);
+    color: var(--negro);
+    border: var(--borde) solid var(--gris);
+    border-radius: var(--radio);
+    font-size: var(--fuente-campo);
+    font-weight: normal;
+    box-sizing: border-box;
 }
 
-/* ==============================
-   CATÁLOGO DE DRAGON CITY
-   ============================== */
+#categoriaValor {
+    grid-column: 2;
+}
+
+#eclosionValor {
+    grid-column: 2;
+}
+
+
+/* Sliders Webkit */
+
+#categoria::-webkit-slider-runnable-track,
+#eclosion::-webkit-slider-runnable-track {
+    height: 6px;
+    background-color: var(--gris);
+    border-radius: var(--radio);
+}
+
+#categoria::-webkit-slider-thumb,
+#eclosion::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    margin-top: -6px;
+    appearance: none;
+    background-color: var(--azul-oscuro);
+    border: none;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: background-color var(--transicion);
+}
+
+#categoria::-webkit-slider-thumb:hover,
+#eclosion::-webkit-slider-thumb:hover {
+    background-color: var(--azul-hover);
+}
+
+
+/* Sliders Firefox */
+
+#categoria::-moz-range-track,
+#eclosion::-moz-range-track {
+    height: 6px;
+    background-color: var(--gris);
+    border-radius: var(--radio);
+}
+
+#categoria::-moz-range-thumb,
+#eclosion::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background-color: var(--azul-oscuro);
+    border: none;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: background-color var(--transicion);
+}
+
+#categoria::-moz-range-thumb:hover,
+#eclosion::-moz-range-thumb:hover {
+    background-color: var(--azul-hover);
+}
+
+
+/* Reproduccion / precio / ingresos */
+
+#reproduccion,
+#precio,
+#ingresos {
+    flex: 1;
+    min-width: 0;
+}
+
+#ingresos + span {
+    color: var(--gris-oscuro);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* Botones */
+
+#submitBtn,
+.btn-detail,
+td:last-child button {
+    color: var(--blanco);
+    background-color: var(--azul-oscuro);
+    border: var(--borde) solid transparent;
+    border-radius: var(--radio);
+    font-family: var(--fuente);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color var(--transicion), box-shadow var(--transicion);
+}
+
+#submitBtn:hover,
+.btn-detail:hover {
+    background-color: var(--azul-hover);
+    box-shadow: 0 3px 6px rgba(8, 120, 209, .25);
+}
+
+#submitBtn:active,
+.btn-detail:active,
+td:last-child button:active {
+    box-shadow: none;
+}
+
+
+/* Boton agregar */
+
+#submitBtn {
+    display: block;
+    margin: 20px auto 5px;
+    padding: 8px 25px;
+    font-size: 16px;
+}
+
+
+/* Tabla */
+
+table {
+    width: 90%;
+    margin: 35px auto;
+    background-color: var(--gris);
+    border-collapse: separate;
+    border-spacing: var(--espacio-tabla);
+    border-radius: var(--radio);
+    overflow: hidden;
+    font-family: var(--fuente);
+}
+
+th,
+td {
+    padding: 10px;
+    border: none;
+    border-radius: var(--radio);
+    text-align: center;
+}
+
+th {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    font-weight: bold;
+}
+
+td {
+    background-color: var(--amarillo);
+    color: var(--negro);
+}
+
+td:last-child {
+    white-space: nowrap;
+}
+
+
+/* Botones de la tabla */
+
+td:last-child button {
+    padding: 7px 12px;
+    margin: 2px;
+    font-size: var(--fuente-campo);
+}
+
+
+/* Boton editar */
+
+td:last-child button:first-child {
+    background-color: var(--verde);
+}
+
+td:last-child button:first-child:hover {
+    background-color: var(--verde-hover);
+}
+
+
+/* Boton eliminar */
+
+td:last-child button:last-child {
+    background-color: var(--rojo);
+}
+
+td:last-child button:last-child:hover {
+    background-color: var(--rojo-hover);
+}
+
+
+/* Catalogo */
 
 #catalogContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--espacio-catalogo);
+    width: min(90%, 1200px);
+    margin: auto;
 }
 
-/* Card de cada dragón */
-
-#catalogContainer .dragon-card {
-    background-color: white;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto al pasar el mouse */
-
-#catalogContainer .dragon-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Imagen del dragón */
-
-#catalogContainer .dragon-image {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-#catalogContainer .dragon-image img {
-    max-width: 100%;
-    max-height: 200px;
-    object-fit: contain;
-}
-
-/* Información */
-
-#catalogContainer .dragon-info h3 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-/* Elementos */
-
-#catalogContainer .dragon-elements {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-#catalogContainer .element-icon {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-}
-
-/* Textos */
-
-#catalogContainer .dragon-info p {
-    margin: 8px 0;
-}
-
-/* Botón */
-
-#catalogContainer .btn-detail {
-    width: 100%;
+.dragon-card {
     padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s ease;
+    background-color: var(--blanco);
+    border: var(--borde) solid var(--gris);
+    border-radius: var(--radio);
 }
 
-#catalogContainer .btn-detail:hover {
-    transform: scale(1.03);
+.dragon-image {
+    text-align: center;
 }
+
+.dragon-image img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.dragon-info h3 {
+    color: var(--azul-oscuro);
+    text-align: center;
+}
+
+.dragon-elements {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.element-icon {
+    width: 40px;
+    height: 40px;
+}
+
+
+/* Boton detalle */
+
+.btn-detail {
+    width: 100%;
+    padding: 7px;
+    font-size: var(--fuente-normal);
+}
+
+
+/* Modal */
 
 #detailModal {
     display: none;
@@ -246,4 +577,256 @@ body {
 
 #detailModal.show {
     display: flex;
+}
+
+.modal-content {
+    padding: 20px;
+    background-color: var(--blanco);
+    border: none;
+    border-radius: var(--radio);
+}
+
+
+/* Boton cerrar modal */
+
+.close-modal {
+    padding: 5px 10px;
+    background-color: var(--blanco);
+    color: var(--gris-oscuro);
+    border: var(--borde) solid var(--gris);
+    border-radius: var(--radio-circular);
+    cursor: pointer;
+    transition: background-color var(--transicion), color var(--transicion), border-color var(--transicion);
+}
+
+.close-modal:hover {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border-color: var(--rojo);
+}
+
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+
+    #catalogContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #itemForm > div {
+        gap: 12px;
+    }
+
+    table {
+        width: 95%;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    body {
+        margin: 12px;
+    }
+
+    .navbar {
+        padding: 8px;
+    }
+
+    .navbar .logo {
+        width: 100px;
+    }
+
+    .navbar ul {
+        gap: 6px;
+    }
+
+    .navbar a {
+        padding: 9px 10px;
+    }
+
+    #itemForm {
+        width: 100%;
+        padding: 18px;
+        border-width: 5px;
+    }
+
+    #itemForm > div {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    #nombre,
+    #img,
+    #descripcion,
+    #elemento1,
+    #elemento2,
+    #elemento3,
+    #elemento4,
+    #reproduccion,
+    #precio,
+    #ingresos {
+        width: 100%;
+        flex: 1 1 45%;
+    }
+
+    #itemForm > div > div:has(#categoria),
+    #itemForm > div > div:has(#eclosion) {
+        width: 100%;
+    }
+
+    #catalogContainer {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        margin: 8px;
+        font-size: var(--fuente-campo);
+    }
+
+    h1 {
+        margin: 15px 0 20px;
+        font-size: var(--fuente-titulo);
+    }
+
+    .navbar {
+        margin-bottom: 15px;
+    }
+
+    .navbar .logo {
+        width: 90px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .navbar a {
+        padding: 9px;
+    }
+
+    #itemForm {
+        padding: 15px;
+        border-width: 4px;
+    }
+
+    #itemForm > div {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    #itemForm > div > div:has(#categoria),
+    #itemForm > div > div:has(#eclosion) {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    #itemForm > div > div:has(#eclosion) {
+        grid-template-columns: 1fr auto;
+    }
+
+    #unidad {
+        grid-column: 1 / -1;
+        width: 100% !important;
+        margin-top: 5px;
+    }
+
+    #categoria,
+    #eclosion {
+        width: 100%;
+    }
+
+    #nombre,
+    #img,
+    #descripcion,
+    #elemento1,
+    #elemento2,
+    #elemento3,
+    #elemento4,
+    #reproduccion,
+    #precio,
+    #ingresos {
+        width: 100%;
+        flex: none;
+    }
+
+    #submitBtn {
+        width: 100%;
+    }
+
+    #catalogContainer {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dragon-card {
+        padding: 12px;
+    }
+
+    .dragon-image img {
+        height: 200px;
+    }
+
+    .modal-content {
+        width: calc(100% - 20px);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    body {
+        margin: 5px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #itemForm {
+        padding: 10px;
+    }
+
+    #itemForm > div {
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+
+    #categoriaValor,
+    #eclosionValor {
+        width: 32px;
+        height: 28px;
+        font-size: var(--fuente-pequena);
+    }
+
+    .element-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .dragon-image img {
+        height: 170px;
+    }
 }
